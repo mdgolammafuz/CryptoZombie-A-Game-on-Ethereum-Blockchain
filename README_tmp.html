@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="crypto-zombie-game-using-solidity-and-ethereum">Crypto-Zombie Game using Solidity and Ethereum</h1>
+<br>
+<h2 id="1-making-the-zombie-factory">1. Making the Zombie Factory</h2>
+<h3 id="11-overview">1.1 Overview</h3>
+<p>In this section, we are going to build a &quot;Zombie Factory&quot; to build an army of zombies.</p>
+<ul>
+<li>
+<p>Our factory will maintain a database of all zombies in our army</p>
+</li>
+<li>
+<p>Our factory will have a function for creating new zombies</p>
+</li>
+<li>
+<p>Each zombie will have a random and unique appearance</p>
+</li>
+</ul>
+<h4 id="how-zombie-dna-works">How Zombie DNA Works</h4>
+<p>The zombie's appearance will be based on its &quot;Zombie DNA&quot;. Zombie DNA is simple — it's a 16-digit integer, like:</p>
+<pre class="hljs"><code><div>8356281049284737
+</div></code></pre>
+<p>Just like real DNA, different parts of this number will map to different traits. The first 2 digits (<code>83</code>) map to the zombie's head type, the second 2 digits (<code>56</code>) to the zombie's eyes, etc. We will keep things simple, and our zombies can have only 7 different types of heads (even though 2 digits allow 100 possible options). Later on we could add more head types if we wanted to increase the number of zombie variations. For example, the first 2 digits of our example DNA above are 83. To map that to the zombie's head type, we do 83 % 7 + 1 = 7. So this Zombie would have the 7th zombie head type.</p>
+<h3 id="12-contracts">1.2 Contracts</h3>
+<p>Solidity's code is encapsulated in contracts. A <code>contract</code> is the fundamental building block of Ethereum applications — all variables and functions belong to a contract, and this will be the starting point of all your projects.</p>
+<p>An empty contract named <code>HelloWorld</code> would look like this:</p>
+<pre class="hljs"><code><div>
+contract HelloWorld {
+
+}
+</div></code></pre>
+<h4 id="version-pragma">Version Pragma</h4>
+<p>All solidity source code should start with a &quot;version pragma&quot; — a declaration of the version of the Solidity compiler this code should use. This is to prevent issues with future compiler versions potentially introducing changes that would break your code.</p>
+<p>We want to be able to compile our smart contracts with any compiler version in the range of 0.5.0 (inclusive) to 0.6.0 (exclusive). It looks like this: <code>pragma solidity &gt;=0.5.0 &lt;0.6.0;</code>.</p>
+<p>To start creating our Zombie army, let's create a empty base contract called <code>ZombieFactory</code></p>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+}
+</div></code></pre>
+<h3 id="13-state-variables--integers">1.3 State Variables &amp; Integers</h3>
+<p><code>State variables</code> are permanently stored in contract storage. This means they're written to the Ethereum blockchain. Think of them like writing to a DB.</p>
+<h4 id="unsigned-integers-uint">Unsigned Integers: <code>uint</code></h4>
+<p>The <code>uint</code> data type is an unsigned integer, meaning its value must be non-negative. There's also an int data type for signed integers.</p>
+<p><strong>Note</strong>: In Solidity, <code>uint</code> is actually an alias for <code>uint256</code>, a 256-bit unsigned integer. We can declare uints with less bits — <code>uint8</code>, <code>uint16</code>, <code>uint32</code>, etc..</p>
+<p>Our Zombie DNA is going to be determined by a 16-digit number:</p>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+
+}
+</div></code></pre>
+<h3 id="14-math-operations">1.4 Math Operations</h3>
+<p>Math in Solidity is pretty straightforward. The following operations are the same as in most programming languages:</p>
+<ul>
+<li>
+<p>Addition: x + y</p>
+</li>
+<li>
+<p>Subtraction: x - y,</p>
+</li>
+<li>
+<p>Multiplication: x * y</p>
+</li>
+<li>
+<p>Division: x / y</p>
+</li>
+<li>
+<p>Modulus / remainder: x % y (for example, 13 % 5 is 3, because if you divide 5 into 13, 3 is the remainder)</p>
+</li>
+<li>
+<p>Solidity also supports an exponential operator (i.e. &quot;x to the power of y&quot;, x^y):</p>
+<pre class="hljs"><code><div>uint x = <span class="hljs-number">5</span> ** <span class="hljs-number">2</span>; <span class="hljs-comment">// equal to 5^2 = 25</span>
+</div></code></pre>
+</li>
+</ul>
+<p>To make sure our Zombie's DNA is only 16 characters, let's make another <code>uint</code> equal to <code>10^16</code>. That way we can later use the modulus operator <code>%</code> to shorten an integer to 16 digits.</p>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    <span class="hljs-comment">// start here</span>
+
+}
+</div></code></pre>
+<h3 id="15-structs">1.5 Structs</h3>
+<p>Sometimes we need a more complex data type. For this, Solidity provides structs:</p>
+<pre class="hljs"><code><div>struct Person {
+  uint age;
+  string name;
+}
+</div></code></pre>
+<p>Structs allow you to create more complicated data types that have multiple properties.</p>
+<p>Note that we just introduced a new type, <code>string</code>. Strings are used for arbitrary-length UTF-8 data. Ex. <code>string greeting = &quot;Hello world!&quot;</code></p>
+<p>In our app, we're going to want to create some zombies! And zombies will have multiple properties, so this is a perfect use case for a <code>struct</code>.</p>
+<ol>
+<li>
+<p>Create a <code>struct</code> named <code>Zombie</code>.</p>
+</li>
+<li>
+<p>Our Zombie struct will have 2 properties: <code>name</code> (a <code>string</code>), and <code>dna</code> (a <code>uint</code>).</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+</div></code></pre>
+<h3 id="16-arrays">1.6 Arrays</h3>
+<p>When you want a collection of something, we can use an <code>array</code>. There are two types of arrays in Solidity: <code>fixed</code> arrays and <code>dynamic</code> arrays:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Array with a fixed length of 2 elements:</span>
+uint[<span class="hljs-number">2</span>] fixedArray;
+<span class="hljs-comment">// another fixed Array, can contain 5 strings:</span>
+string[<span class="hljs-number">5</span>] stringArray;
+<span class="hljs-comment">// a dynamic Array - has no fixed size, can keep growing:</span>
+uint[] dynamicArray;
+</div></code></pre>
+<p>We can also create an array of <code>structs</code>. Using the previous section's <code>Person</code> struct:</p>
+<pre class="hljs"><code><div>Person[] people; <span class="hljs-comment">// dynamic Array, we can keep adding to it</span>
+</div></code></pre>
+<p>Remember that state variables are stored permanently in the blockchain? So creating a dynamic array of structs like this can be useful for storing structured data in our contract, kind of like a database.</p>
+<h4 id="public-arrays">Public Arrays</h4>
+<p>We can declare an <code>array</code> as <code>public</code>, and Solidity will automatically create a <code>getter</code> method for it. The syntax looks like:</p>
+<pre class="hljs"><code><div>Person[] public people;
+</div></code></pre>
+<p>Other contracts would then be able to read from, but not write to, this array. So this is a useful pattern for storing public data in your contract.</p>
+<p>We're going to want to store an army of zombies in our app. And we're going to want to show off all our zombies to other apps, so we'll want it to be public.</p>
+<ol>
+<li>Create a public array of <code>Zombie</code> <code>structs</code>, and name it <code>zombies</code>.</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies
+
+}
+</div></code></pre>
+<h3 id="17-function-declarations">1.7 Function Declarations</h3>
+<p>A function declaration in solidity looks like the following:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">eatHamburgers</span>(<span class="hljs-params">string memory _name, uint _amount</span>) <span class="hljs-title">public</span> </span>{
+
+}
+</div></code></pre>
+<p>This is a function named <code>eatHamburgers</code> that takes 2 parameters: a <code>string</code> and a <code>uint</code>. For now the body of the function is empty. Note that we're specifying the function visibility as <code>public</code>. We're also providing instructions about where the <code>_name</code> variable should be stored- in <code>memory</code>. This is required for all reference types such as arrays, structs, mappings, and strings.</p>
+<p>What is a reference type we ask?</p>
+<p>Well, there are two ways in which we can pass an argument to a Solidity function:</p>
+<ul>
+<li>
+<p>By value, which means that the Solidity compiler creates a new copy of the parameter's value and passes it to our function. This allows our function to modify the value without worrying that the value of the initial parameter gets changed.</p>
+</li>
+<li>
+<p>By reference, which means that your function is called with a reference to the original variable. Thus, if your function changes the value of the variable it receives, the value of the original variable gets changed.</p>
+</li>
+</ul>
+<p><strong>Note</strong>: It's convention (but not required) to start function parameter variable names with an underscore (_) in order to differentiate them from global variables. We'll use that convention throughout our project.</p>
+<p>We would call this function like so:</p>
+<pre class="hljs"><code><div>eatHamburgers(<span class="hljs-string">"vitalik"</span>, <span class="hljs-number">100</span>);
+</div></code></pre>
+<p>In our app, we're going to need to be able to create some zombies. Let's create a function for that.</p>
+<ol>
+<li>Create a <code>public</code> function named <code>createZombie</code>. It should take two parameters: _name (a <code>string</code>), and _dna (a <code>uint</code>). We will pass the first argument by value by using the <code>memory</code> keyword</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createZombie</span> (<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">public</span> </span>{
+        <span class="hljs-comment">// start here</span>
+    }
+
+}
+</div></code></pre>
+<h3 id="18-working-with-structs-and-arrays">1.8 Working With Structs and Arrays</h3>
+<h4 id="creating-new-structs">Creating New Structs</h4>
+<p>Remember our <code>Person</code> struct in the previous example?</p>
+<pre class="hljs"><code><div>struct Person {
+  uint age;
+  string name;
+}
+
+Person[] public people;
+</div></code></pre>
+<p>Now we're going to learn how to create new <code>Person</code>s and add them to our <code>people</code> array.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// create a New Person:</span>
+Person satoshi = Person(<span class="hljs-number">172</span>, <span class="hljs-string">"Satoshi"</span>);
+
+<span class="hljs-comment">// Add that person to the Array:</span>
+people.push(satoshi);
+
+</div></code></pre>
+<p>We can also combine these together and do them in one line of code to keep things clean:</p>
+<pre class="hljs"><code><div>people.push(Person(<span class="hljs-number">16</span>, <span class="hljs-string">"Vitalik"</span>));
+
+</div></code></pre>
+<p>Note that <code>array.push()</code> adds something to the end of the array, so the elements are in the order we added them. See the following example:</p>
+<pre class="hljs"><code><div>uint[] numbers;
+numbers.push(<span class="hljs-number">5</span>);
+numbers.push(<span class="hljs-number">10</span>);
+numbers.push(<span class="hljs-number">15</span>);
+<span class="hljs-comment">// numbers is now equal to [5, 10, 15]</span>
+</div></code></pre>
+<p>Let's make our createZombie function do something!</p>
+<ol>
+<li>Fill in the function body so it creates a new <code>Zombie</code>, and adds it to the <code>zombies</code> array. The <code>name</code> and <code>dna</code> for the new Zombie should come from the function arguments.</li>
+<li>Let's do it in one line of code to keep things clean.</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">public</span> </span>{
+        zombies.push(Zombie(_name, _dna));
+    }
+
+}
+</div></code></pre>
+<h3 id="19-private--public-functions">1.9 Private / Public Functions</h3>
+<p>In Solidity, functions are <code>public</code> by default. This means anyone (or any other contract) can call your contract's function and execute its code.</p>
+<p>Obviously this isn't always desirable, and can make your contract vulnerable to attacks. Thus it's good practice to mark your functions as <code>private</code> by default, and then only make <code>public</code> the functions we want to expose to the world.</p>
+<p>Let's look at how to declare a private function:</p>
+<pre class="hljs"><code><div>uint[] numbers;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_addToArray</span>(<span class="hljs-params">uint _number</span>) <span class="hljs-title">private</span> </span>{
+  numbers.push(_number);
+}
+</div></code></pre>
+<p>This means only other functions within our contract will be able to call this function and add to the <code>numbers</code> array.</p>
+<p>As we can see, we use the keyword <code>private</code> after the function name. And as with function parameters, it's convention to start private function names with an underscore (_).</p>
+<p>Our contract's <code>createZombie</code> function is currently public by default — this means anyone could call it and create a new Zombie in our contract! Let's make it private.</p>
+<ol>
+<li>Modify <code>createZombie</code> so it's a <code>private</code> function. Don't forget the naming convention!</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">private</span> </span>{
+        zombies.push(Zombie(_name, _dna));
+    }
+
+}
+
+</div></code></pre>
+<h3 id="110-more-on-functions">1.10 More on Functions</h3>
+<p>In this section, we're going to learn about function <code>return values</code>, and function modifiers.</p>
+<h4 id="return-values">Return Values</h4>
+<p>To return a value from a function, the declaration looks like this:</p>
+<pre class="hljs"><code><div>string greeting = <span class="hljs-string">"What's up dog"</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
+  <span class="hljs-keyword">return</span> greeting;
+}
+</div></code></pre>
+<p>In Solidity, the function declaration contains the type of the return value (in this case <code>string</code>).</p>
+<h4 id="function-modifiers">Function modifiers</h4>
+<p>The above function doesn't actually change state in Solidity — e.g. it doesn't change any values or write anything.</p>
+<p>So in this case we could declare it as a <code>view</code> function, meaning it's only viewing the data but not modifying it:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
+}
+</div></code></pre>
+<p>Solidity also contains <code>pure</code> functions, which means we are not even accessing any data in the app. Consider the following:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_multiply</span>(<span class="hljs-params">uint a, uint b</span>) <span class="hljs-title">private</span> <span class="hljs-title">pure</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+  <span class="hljs-keyword">return</span> a * b;
+}
+
+</div></code></pre>
+<p>This function doesn't even read from the state of the app — its return value depends only on its function parameters. So in this case we would declare the function as <code>pure</code>.
+`
+<strong>Note</strong>: It may be hard to remember when to mark functions as pure/view. Luckily the Solidity compiler is good about issuing warnings to let you know when you should use one of these modifiers.</p>
+<p>We're going to want a helper function that generates a random DNA number from a string.</p>
+<ol>
+<li>
+<p>Create a private function called <code>generateRandomDna</code>. It will take one parameter named _<code>str</code> (a <code>string</code>), and return a <code>uint</code>. Don't forget to set the data location of the <code>str</code> parameter to <code>memory</code>.</p>
+</li>
+<li>
+<p>This function will view some of our contract's variables but not modify them, so mark it as <code>view</code>.</p>
+</li>
+<li>
+<p>The function body should be empty at this point — we'll fill it in later.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity ^<span class="hljs-number">0.4</span><span class="hljs-number">.25</span>;
+
+contract ZombieFactory {
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">private</span> </span>{
+        zombies.push(Zombie(_name, _dna));
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_generateRandomDna</span>(<span class="hljs-params">string memory _str</span>) <span class="hljs-title">private</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+        <span class="hljs-comment">// will include later</span>
+    }
+
+}
+</div></code></pre>
+<h3 id="111-keccak256-and-typecasting">1.11 Keccak256 and Typecasting</h3>
+<p>We want our <code>_generateRandomDna</code> function to return a (semi) random <code>uint</code>. How can we accomplish this?</p>
+<p>Ethereum has the hash function <code>keccak256</code> built in, which is a version of SHA3. A hash function basically maps an input into a random 256-bit hexadecimal number. A slight change in the input will cause a large change in the hash.</p>
+<p>It's useful for many purposes in Ethereum, but for right now we're just going to use it for pseudo-random number generation.</p>
+<p>Also important, <code>keccak256</code> expects a single parameter of type <code>bytes</code>. This means that we have to &quot;pack&quot; any parameters before calling <code>keccak256</code>:</p>
+<p>Example:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">//6e91ec6b618bb462a4a6ee5aa2cb0e9cf30f7a052bb467b0ba58b8748c00d2e5</span>
+keccak256(abi.encodePacked(<span class="hljs-string">"aaaab"</span>));
+<span class="hljs-comment">//b1f078126895a1424524de5321b339ab00408010b7cf0e6ed451514981e58aa9</span>
+keccak256(abi.encodePacked(<span class="hljs-string">"aaaac"</span>));
+</div></code></pre>
+<p>As you can see, the returned values are totally different despite only a 1 character change in the input.</p>
+<p><strong>Note</strong>: Secure random-number generation in blockchain is a very difficult problem. Our method here is insecure, but since security isn't top priority for our Zombie DNA, it will be good enough for our purposes.</p>
+<h4 id="typecasting">Typecasting</h4>
+<p>Sometimes we need to convert between data types. Take the following example:</p>
+<pre class="hljs"><code><div>uint8 a = <span class="hljs-number">5</span>;
+uint b = <span class="hljs-number">6</span>;
+<span class="hljs-comment">// throws an error because a * b returns a uint, not uint8:</span>
+uint8 c = a * b;
+<span class="hljs-comment">// we have to typecast b as a uint8 to make it work:</span>
+uint8 c = a * uint8(b);
+</div></code></pre>
+<p>In the above, <code>a * b</code> returns a <code>uint</code>, but we were trying to store it as a <code>uint8</code>, which could cause potential problems. By casting it as a <code>uint8</code>, it works and the compiler won't throw an error.</p>
+<p>Let's fill in the body of our <code>_generateRandomDna</code> function! Here's what it should do:</p>
+<ol>
+<li>
+<p>The first line of code should take the <code>keccak256</code> hash of <code>abi.encodePacked(_str)</code> to generate a pseudo-random hexadecimal, typecast it as a <code>uint</code>, and finally store the result in a <code>uint</code> called <code>rand</code>.</p>
+</li>
+<li>
+<p>We want our DNA to only be 16 digits long (remember our <code>dnaModulus</code>?). So the second line of code should return the above value modulus (<code>%</code>) <code>dnaModulus</code>.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity  &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">private</span> </span>{
+        zombies.push(Zombie(_name, _dna));
+    } 
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_generateRandomDna</span>(<span class="hljs-params">string memory _str</span>) <span class="hljs-title">private</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
+        <span class="hljs-keyword">return</span> rand % dnaModulus;
+    }
+}
+</div></code></pre>
+<h3 id="112-putting-it-together">1.12 Putting It Together</h3>
+<p>We're close to being done with our random Zombie generator! Let's create a public function that ties everything together.</p>
+<p>We're going to create a public function that takes an input, the zombie's name, and uses the name to create a zombie with random DNA.</p>
+<ol>
+<li>
+<p>Create a <code>public</code> function named <code>createRandomZombie</code>. It will take one parameter named <code>_name</code> (a <code>string</code> with the data location set to <code>memory</code>). (Note: Declare this function <code>public</code> just as you declared previous functions <code>private</code>)</p>
+</li>
+<li>
+<p>The first line of the function should run the <code>_generateRandomDna</code> function on <code>_name</code>, and store it in a <code>uint</code> named <code>randDna</code>.</p>
+</li>
+<li>
+<p>The second line should run the <code>createZombie</code> function and pass it <code>_name</code>and <code>randDna</code>.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    <span class="hljs-comment">// will declare our event here</span>
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">private</span> </span>{
+        zombies.push(Zombie(_name, _dna));
+        <span class="hljs-comment">// will fire it here</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_generateRandomDna</span>(<span class="hljs-params">string memory _str</span>) <span class="hljs-title">private</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
+        <span class="hljs-keyword">return</span> rand % dnaModulus;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createRandomZombie</span>(<span class="hljs-params">string memory _name</span>) <span class="hljs-title">public</span> </span>{
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
+
+}
+</div></code></pre>
+<h3 id="113-events">1.13 Events</h3>
+<p>Now let's add an <code>event</code>.</p>
+<p><code>Events</code> are a way for your contract to communicate that something happened on the blockchain to your app front-end, which can be 'listening' for certain events and take action when they happen.</p>
+<p>Example:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// declare the event</span>
+event IntegersAdded(uint x, uint y, uint result);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">uint _x, uint _y</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+  uint result = _x + _y;
+  <span class="hljs-comment">// fire an event to let the app know the function was called:</span>
+  emit IntegersAdded(_x, _y, result);
+  <span class="hljs-keyword">return</span> result;
+}
+</div></code></pre>
+<p>Our app front-end could then listen for the <code>event</code>. A javascript implementation would look something like:</p>
+<pre class="hljs"><code><div>OurContract.IntegersAdded(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, result</span>) </span>{
+  <span class="hljs-comment">// do something with result</span>
+})
+</div></code></pre>
+<p>We want an <code>event</code> to let our front-end know every time a new zombie was created, so the app can display it.</p>
+<ol>
+<li>
+<p>Declare an <code>event</code> called <code>NewZombie</code>. It should pass <code>zombieId</code> (a <code>uint</code>), <code>name</code> (a <code>string</code>), and <code>dna</code> (a <code>uint</code>).</p>
+</li>
+<li>
+<p>Modify the <code>_createZombie</code> function to fire the <code>NewZombie</code> <code>event</code> after adding the new Zombie to our <code>zombies</code> array.</p>
+</li>
+<li>
+<p>We are going to need the zombie's <code>id. array.push()</code> returns a <code>uint</code> of the new length of the array - and since the first item in an array has index 0, <code>array.push() - 1</code> will be the index of the zombie we just added. Store the result of <code>zombies.push() - 1</code> in a <code>uint</code> called <code>id</code>, so you can use this in the <code>NewZombie</code> event in the next line.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    event NewZombie(uint zombieId, string name, uint dna);
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">private</span> </span>{
+        uint id = zombies.push(Zombie(_name, _dna)) - <span class="hljs-number">1</span>;
+        emit NewZombie(id, _name, _dna);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_generateRandomDna</span>(<span class="hljs-params">string memory _str</span>) <span class="hljs-title">private</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
+        <span class="hljs-keyword">return</span> rand % dnaModulus;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createRandomZombie</span>(<span class="hljs-params">string memory _name</span>) <span class="hljs-title">public</span> </span>{
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
+
+}
+</div></code></pre>
+<p>Our <em><strong>Solidity contract</strong></em> is complete! Now we need to write a javascript frontend that interacts with the contract.</p>
+<p>Ethereum has a Javascript library called <code>Web3.js</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Here's how we would access our contract:</span>
+<span class="hljs-keyword">var</span> abi = <span class="hljs-comment">/* abi generated by the compiler */</span>
+<span class="hljs-keyword">var</span> ZombieFactoryContract = web3.eth.contract(abi)
+<span class="hljs-keyword">var</span> contractAddress = <span class="hljs-comment">/* our contract address on Ethereum after deploying */</span>
+<span class="hljs-keyword">var</span> ZombieFactory = ZombieFactoryContract.at(contractAddress)
+<span class="hljs-comment">// `ZombieFactory` has access to our contract's public functions and events</span>
+
+<span class="hljs-comment">// some sort of event listener to take the text input:</span>
+$(<span class="hljs-string">"#ourButton"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+  <span class="hljs-keyword">var</span> name = $(<span class="hljs-string">"#nameInput"</span>).val()
+  <span class="hljs-comment">// Call our contract's `createRandomZombie` function:</span>
+  ZombieFactory.createRandomZombie(name)
+})
+
+<span class="hljs-comment">// Listen for the `NewZombie` event, and update the UI</span>
+<span class="hljs-keyword">var</span> event = ZombieFactory.NewZombie(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, result</span>) </span>{
+  <span class="hljs-keyword">if</span> (error) <span class="hljs-keyword">return</span>
+  generateZombie(result.zombieId, result.name, result.dna)
+})
+
+<span class="hljs-comment">// take the Zombie dna, and update our image</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateZombie</span>(<span class="hljs-params">id, name, dna</span>) </span>{
+  <span class="hljs-keyword">let</span> dnaStr = <span class="hljs-built_in">String</span>(dna)
+  <span class="hljs-comment">// pad DNA with leading zeroes if it's less than 16 characters</span>
+  <span class="hljs-keyword">while</span> (dnaStr.length &lt; <span class="hljs-number">16</span>)
+    dnaStr = <span class="hljs-string">"0"</span> + dnaStr
+
+  <span class="hljs-keyword">let</span> zombieDetails = {
+    <span class="hljs-comment">// first 2 digits make up the head. We have 7 possible heads, so % 7</span>
+    <span class="hljs-comment">// to get a number 0 - 6, then add 1 to make it 1 - 7. Then we have 7</span>
+    <span class="hljs-comment">// image files named "head1.png" through "head7.png" we load based on</span>
+    <span class="hljs-comment">// this number:</span>
+    <span class="hljs-attr">headChoice</span>: dnaStr.substring(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>) % <span class="hljs-number">7</span> + <span class="hljs-number">1</span>,
+    <span class="hljs-comment">// 2nd 2 digits make up the eyes, 11 variations:</span>
+    <span class="hljs-attr">eyeChoice</span>: dnaStr.substring(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>) % <span class="hljs-number">11</span> + <span class="hljs-number">1</span>,
+    <span class="hljs-comment">// 6 variations of shirts:</span>
+    <span class="hljs-attr">shirtChoice</span>: dnaStr.substring(<span class="hljs-number">4</span>, <span class="hljs-number">6</span>) % <span class="hljs-number">6</span> + <span class="hljs-number">1</span>,
+    <span class="hljs-comment">// last 6 digits control color. Updated using CSS filter: hue-rotate</span>
+    <span class="hljs-comment">// which has 360 degrees:</span>
+    <span class="hljs-attr">skinColorChoice</span>: <span class="hljs-built_in">parseInt</span>(dnaStr.substring(<span class="hljs-number">6</span>, <span class="hljs-number">8</span>) / <span class="hljs-number">100</span> * <span class="hljs-number">360</span>),
+    <span class="hljs-attr">eyeColorChoice</span>: <span class="hljs-built_in">parseInt</span>(dnaStr.substring(<span class="hljs-number">8</span>, <span class="hljs-number">10</span>) / <span class="hljs-number">100</span> * <span class="hljs-number">360</span>),
+    <span class="hljs-attr">clothesColorChoice</span>: <span class="hljs-built_in">parseInt</span>(dnaStr.substring(<span class="hljs-number">10</span>, <span class="hljs-number">12</span>) / <span class="hljs-number">100</span> * <span class="hljs-number">360</span>),
+    <span class="hljs-attr">zombieName</span>: name,
+    <span class="hljs-attr">zombieDescription</span>: <span class="hljs-string">"A Level 1 CryptoZombie"</span>,
+  }
+  <span class="hljs-keyword">return</span> zombieDetails
+}
+</div></code></pre>
+<p>What our javascript then does is take the values generated in <code>zombieDetails</code> above, and use some browser-based javascript magic (we're using <code>Vue.js</code>) to swap out the images and apply CSS filters.</p>
+<h2 id="2-zombies-attack-their-victims">2. Zombies Attack Their Victims</h2>
+<h3 id="21-overview">2.1 Overview</h3>
+<p>In Section 1, we created a function that takes a name, uses it to generate a random zombie, and adds that zombie to our app's zombie database on the blockchain.</p>
+<p>In this section, we're going to make our app more game-like: We're going to make it multi-player, and we'll also be adding a more fun way to create zombies instead of just generating them randomly.</p>
+<p>How will we create new zombies? By having our zombies &quot;feed&quot; on other lifeforms!</p>
+<h4 id="zombie-feeding">Zombie Feeding</h4>
+<p>When a zombie feeds, it infects the host with a virus. The virus then turns the host into a new zombie that joins your army. The new zombie's DNA will be calculated from the previous zombie's DNA and the host's DNA.</p>
+<h3 id="22-mappings-and-addresses">2.2 Mappings and Addresses</h3>
+<p>Let's make our game multi-player by giving the zombies in our database an owner.</p>
+<p>To do this, we'll need 2 new data types: <code>mapping</code> and <code>address</code>.</p>
+<h4 id="addresses">Addresses</h4>
+<p>The Ethereum blockchain is made up of <code>accounts</code>, which we can think of like bank accounts. An account has a balance of <code>Ether</code> (the currency used on the Ethereum blockchain), and you can send and receive Ether payments to other accounts, just like our bank account can wire transfer money to other bank accounts.</p>
+<p>Each account has an address, which you can think of like a bank account number. It's a unique identifier that points to that account, and it looks like this:</p>
+<pre class="hljs"><code><div>0x0cE446255506E92DF41614C46F1d6df9Cc969183
+</div></code></pre>
+<p>So, an address is owned by a specific user (or a smart contract).</p>
+<p>So we can use it as a unique ID for ownership of our zombies. When a user creates new zombies by interacting with our app, we'll set ownership of those zombies to the Ethereum address that called the function.</p>
+<h4 id="mappings">Mappings</h4>
+<p>In Section 1 we looked at <code>structs</code> and <code>arrays</code>. <code>Mappings</code> are another way of storing organized data in Solidity.</p>
+<p>Defining a <code>mapping</code> looks like this:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// For a financial app, storing a uint that holds the user's account balance:</span>
+mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint) public accountBalance;
+<span class="hljs-comment">// Or could be used to store / lookup usernames based on userId</span>
+mapping (<span class="hljs-function"><span class="hljs-params">uint</span> =&gt;</span> string) userIdToName;
+</div></code></pre>
+<p>A mapping is essentially a key-value store for storing and looking up data. In the first example, the key is an <code>address</code> and the value is a <code>uint</code>, and in the second example the key is a <code>uint</code> and the value a <code>string</code>.</p>
+<p>To store zombie ownership, we're going to use two mappings: one that keeps track of the address that owns a zombie, and another that keeps track of how many zombies an owner has.</p>
+<ol>
+<li>Create a mapping called <code>zombieToOwner</code>. The key will be a <code>uint</code> (we'll store and look up the zombie based on its id) and the value an <code>address</code>. Let's make this mapping <code>public</code>.</li>
+</ol>
+<p>Create a mapping called <code>ownerZombieCount</code>, where the key is an <code>address</code> and the value a <code>uint</code>.</p>
+<pre class="hljs"><code><div>
+pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    event NewZombie(uint zombieId, string name, uint dna);
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    mapping (<span class="hljs-function"><span class="hljs-params">uint</span> =&gt;</span> address) public zombieToOwner;
+    mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint) ownerZombieCount;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">private</span> </span>{
+        uint id = zombies.push(Zombie(_name, _dna)) - <span class="hljs-number">1</span>;
+        emit NewZombie(id, _name, _dna);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_generateRandomDna</span>(<span class="hljs-params">string memory _str</span>) <span class="hljs-title">private</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
+        <span class="hljs-keyword">return</span> rand % dnaModulus;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createRandomZombie</span>(<span class="hljs-params">string memory _name</span>) <span class="hljs-title">public</span> </span>{
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
+
+}
+</div></code></pre>
+<h3 id="23-msgsender">2.3 Msg.sender</h3>
+<p>Now that we have our mappings to keep track of who owns a zombie, we'll want to update the <code>_createZombie</code> method to use them.</p>
+<p>In order to do this, we need to use something called <code>msg.sender</code>.</p>
+<h4 id="msgsender">msg.sender</h4>
+<p>In Solidity, there are certain global variables that are available to all functions. One of these is <code>msg.sender</code>, which refers to the <code>address</code> of the person (or smart contract) who called the current function.</p>
+<p><em><strong>Note</strong></em>: In Solidity, function execution always needs to start with an external caller. A contract will just sit on the blockchain doing nothing until someone calls one of its functions. So there will always be a <code>msg.sender</code>.</p>
+<p>Here's an example of using <code>msg.sender</code> and updating a <code>mapping</code>:</p>
+<pre class="hljs"><code><div>mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint) favoriteNumber;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMyNumber</span>(<span class="hljs-params">uint _myNumber</span>) <span class="hljs-title">public</span> </span>{
+  <span class="hljs-comment">// Update our `favoriteNumber` mapping to store `_myNumber` under `msg.sender`</span>
+  favoriteNumber[msg.sender] = _myNumber;
+  <span class="hljs-comment">// ^ The syntax for storing data in a mapping is just like with arrays</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">whatIsMyNumber</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+  <span class="hljs-comment">// Retrieve the value stored in the sender's address</span>
+  <span class="hljs-comment">// Will be `0` if the sender hasn't called `setMyNumber` yet</span>
+  <span class="hljs-keyword">return</span> favoriteNumber[msg.sender];
+}
+</div></code></pre>
+<p>In this trivial example, anyone could call <code>setMyNumber</code> and store a <code>uint</code> in our contract, which would be tied to their <code>address</code>. Then when they called <code>whatIsMyNumber</code>, they would be returned the <code>uint</code> that they stored.</p>
+<p>Using <code>msg.sender</code> gives you the security of the Ethereum blockchain — the only way someone can modify someone else's data would be to steal the private key associated with their Ethereum address.</p>
+<p>Let's update our <code>_createZombie</code> method from Section 1 to assign ownership of the zombie to whoever called the function.</p>
+<ol>
+<li>
+<p>First, after we get back the new zombie's <code>id</code>, let's update our <code>zombieToOwner</code> mapping to store <code>msg.sender</code> under that <code>id</code>.</p>
+</li>
+<li>
+<p>Second, let's increase <code>ownerZombieCount</code> for this <code>msg.sender</code>.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    event NewZombie(uint zombieId, string name, uint dna);
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    mapping (<span class="hljs-function"><span class="hljs-params">uint</span> =&gt;</span> address) public zombieToOwner;
+    mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint) ownerZombieCount;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">private</span> </span>{
+        uint id = zombies.push(Zombie(_name, _dna)) - <span class="hljs-number">1</span>;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        emit NewZombie(id, _name, _dna);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_generateRandomDna</span>(<span class="hljs-params">string memory _str</span>) <span class="hljs-title">private</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
+        <span class="hljs-keyword">return</span> rand % dnaModulus;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createRandomZombie</span>(<span class="hljs-params">string memory _name</span>) <span class="hljs-title">public</span> </span>{
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
+
+}
+</div></code></pre>
+<h3 id="24-require">2.4 Require</h3>
+<p>In Section 1, we made it so users can create new zombies by calling <code>createRandomZombie</code> and entering a <code>name</code>. However, if users could keep calling this function to create unlimited zombies in their army, the game wouldn't be very fun.</p>
+<p>Let's make it so each player can only call this function once. That way new players will call it when they first start the game in order to create the initial zombie in their army.</p>
+<p>How can we make it so this function can only be called once per player?</p>
+<p>For that we use <code>require</code>. <code>require</code> makes it so that the function will throw an error and stop executing if some condition is not true:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHiToVitalik</span>(<span class="hljs-params">string memory _name</span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
+  <span class="hljs-comment">// Compares if _name equals "Vitalik". Throws an error and exits if not true.</span>
+  <span class="hljs-comment">// (Side note: Solidity doesn't have native string comparison, so we</span>
+  <span class="hljs-comment">// compare their keccak256 hashes to see if the strings are equal)</span>
+  <span class="hljs-built_in">require</span>(keccak256(abi.encodePacked(_name)) == keccak256(abi.encodePacked(<span class="hljs-string">"Vitalik"</span>)));
+  <span class="hljs-comment">// If it's true, proceed with the function:</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-string">"Hi!"</span>;
+}
+</div></code></pre>
+<p>If we call this function with <code>sayHiToVitalik(&quot;Vitalik&quot;)</code>, it will return &quot;Hi!&quot;. If we call it with any other input, it will throw an error and not execute.</p>
+<p>Thus <code>require</code> is quite useful for verifying certain conditions that must be true before running a function.</p>
+<p>In our zombie game, we don't want the user to be able to create unlimited zombies in their army by repeatedly calling <code>createRandomZombie</code> — it would make the game not very fun.</p>
+<p>Let's use <code>require</code> to make sure this function only gets executed one time per user, when they create their first zombie.</p>
+<p>Put a <code>require</code> statement at the beginning of <code>createRandomZombie</code>. The function should check to make sure <code>ownerZombieCount[msg.sender]</code> is equal to <code>0</code>, and throw an error otherwise.</p>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+contract ZombieFactory {
+
+    event NewZombie(uint zombieId, string name, uint dna);
+
+    uint dnaDigits = <span class="hljs-number">16</span>;
+    uint dnaModulus = <span class="hljs-number">10</span> ** dnaDigits;
+
+    struct Zombie {
+        string name;
+        uint dna;
+    }
+
+    Zombie[] public zombies;
+
+    mapping (<span class="hljs-function"><span class="hljs-params">uint</span> =&gt;</span> address) public zombieToOwner;
+    mapping (<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint) ownerZombieCount;
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">private</span> </span>{
+        uint id = zombies.push(Zombie(_name, _dna)) - <span class="hljs-number">1</span>;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        emit NewZombie(id, _name, _dna);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_generateRandomDna</span>(<span class="hljs-params">string memory _str</span>) <span class="hljs-title">private</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+        uint rand = uint(keccak256(abi.encodePacked(_str)));
+        <span class="hljs-keyword">return</span> rand % dnaModulus;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createRandomZombie</span>(<span class="hljs-params">string memory _name</span>) <span class="hljs-title">public</span> </span>{
+        <span class="hljs-built_in">require</span>(ownerZombieCount[msg.sender] == <span class="hljs-number">0</span>);
+        uint randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
+
+}
+</div></code></pre>
+<h3 id="25-inheritance">2.5 Inheritance</h3>
+<p>Sometimes it makes sense to split our code logic across multiple contracts to organize the code.</p>
+<p>One feature of Solidity that makes this more manageable is contract <code>inheritance</code>:</p>
+<pre class="hljs"><code><div>contract Doge {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">catchphrase</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"So Wow CryptoDoge"</span>;
+  }
+}
+
+contract BabyDoge is Doge {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">anotherCatchphrase</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"Such Moon BabyDoge"</span>;
+  }
+}
+</div></code></pre>
+<p><code>BabyDoge</code> <code>inherits</code> from <code>Doge</code>. That means if you compile and deploy <code>BabyDoge</code>, it will have access to both <code>catchphrase()</code> and <code>anotherCatchphrase()</code> (and any other public functions we may define on <code>Doge</code>).</p>
+<p>This can be used for logical inheritance (such as with a subclass, a <code>Cat</code> is an <code>Animal</code>). But it can also be used simply for organizing your code by grouping similar logic together into different contracts.</p>
+<p>We're going to be implementing the functionality for our zombies to feed and multiply. Let's put this logic into its own contract that inherits all the methods from <code>ZombieFactory</code>.</p>
+<p>Make a contract called <code>ZombieFeeding</code> below <code>ZombieFactory</code>. This contract should inherit from our <code>ZombieFactory</code> contract.</p>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+<span class="hljs-comment">// put import statement here</span>
+
+contract ZombieFeeding is ZombieFactory {
+
+}
+</div></code></pre>
+<h3 id="26-import">2.6 Import</h3>
+<p>When we have multiple files and you want to import one file into another, Solidity uses the <code>import</code> keyword:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> <span class="hljs-string">"./someothercontract.sol"</span>;
+
+contract newContract is SomeOtherContract {
+
+}
+</div></code></pre>
+<p>So if we had a file named <code>someothercontract.sol</code> in the same directory as this contract (that's what the <code>./</code> means), it would get imported by the compiler.</p>
+<p>Now that we've set up a multi-file structure, we need to use <code>import</code> to read the contents of the other file:</p>
+<ol>
+<li>Import <code>zombiefactory.sol</code> into our new file, <code>zombiefeeding.sol</code>.</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./zombiefactory.sol"</span>;
+contract ZombieFeeding is ZombieFactory {
+}
+</div></code></pre>
+<h3 id="27-storage-vs-memory-data-location">2.7 Storage vs Memory (Data location)</h3>
+<p>In Solidity, there are two locations you can store variables — in <code>storage</code> and in <code>memory</code>.</p>
+<p><code>Storage</code> refers to variables stored permanently on the blockchain. <code>Memory</code> variables are temporary, and are erased between external function calls to your contract. Think of it like your computer's hard disk vs RAM.</p>
+<p>Most of the time you don't need to use these keywords because Solidity handles them by default. State variables (variables declared outside of functions) are by default <code>storage</code> and written permanently to the blockchain, while variables declared inside functions are <code>memory</code> and will disappear when the function call ends.</p>
+<p>However, there are times when you do need to use these keywords, namely when dealing with <code>structs</code> and <code>arrays</code> within functions:</p>
+<pre class="hljs"><code><div>contract SandwichFactory {
+  struct Sandwich {
+    string name;
+    string status;
+  }
+
+  Sandwich[] sandwiches;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">eatSandwich</span>(<span class="hljs-params">uint _index</span>) <span class="hljs-title">public</span> </span>{
+    <span class="hljs-comment">// Sandwich mySandwich = sandwiches[_index];</span>
+
+    <span class="hljs-comment">// ^ Seems pretty straightforward, but solidity will give you a warning</span>
+    <span class="hljs-comment">// telling you that you should explicitly declare `storage` or `memory` here.</span>
+
+    <span class="hljs-comment">// So instead, you should declare with the `storage` keyword, like:</span>
+    Sandwich storage mySandwich = sandwiches[_index];
+    <span class="hljs-comment">// ...in which case `mySandwich` is a pointer to `sandwiches[_index]`</span>
+    <span class="hljs-comment">// in storage, and...</span>
+    mySandwich.status = <span class="hljs-string">"Eaten!"</span>;
+    <span class="hljs-comment">// ...this will permanently change `sandwiches[_index]` on the blockchain.</span>
+
+    <span class="hljs-comment">// If you just want a copy, you can use `memory`:</span>
+    Sandwich memory anotherSandwich = sandwiches[_index + <span class="hljs-number">1</span>];
+    <span class="hljs-comment">// ...in which case `anotherSandwich` will simply be a copy of the </span>
+    <span class="hljs-comment">// data in memory, and...</span>
+    anotherSandwich.status = <span class="hljs-string">"Eaten!"</span>;
+    <span class="hljs-comment">// ...will just modify the temporary variable and have no effect </span>
+    <span class="hljs-comment">// on `sandwiches[_index + 1]`. But you can do this:</span>
+    sandwiches[_index + <span class="hljs-number">1</span>] = anotherSandwich;
+    <span class="hljs-comment">// ...if you want to copy the changes back into blockchain storage.</span>
+  }
+}
+</div></code></pre>
+<p>Solidity compiler will also give you warnings to let you know when you should be using one of these keywords.</p>
+<p>It's time to give our zombies the ability to feed and multiply!</p>
+<p>When a zombie feeds on some other lifeform, its DNA will combine with the other lifeform's DNA to create a new zombie.</p>
+<ol>
+<li>
+<p>Create a function called <code>feedAndMultiply</code>. It will take two parameters: <code>zombieId</code> (a <code>uint</code>) and <code>targetDna</code> (also a <code>uint</code>). This function should be <code>public</code>.</p>
+</li>
+<li>
+<p>We don't want to let someone else feed our zombie! So first, let's make sure we own this zombie. Add a <code>require</code> statement to verify that <code>msg.sender</code> is equal to this zombie's owner (similar to how we did in the <code>createRandomZombie</code> function).</p>
+</li>
+</ol>
+<p><strong>Note</strong>: Although here we expect <code>msg.sender</code> to come first, but, normally when we're coding, we can use whichever order we prefer — both are correct.</p>
+<ol start="3">
+<li>We're going to need to get this zombie's DNA. So the next thing our function should do is declare a local <code>Zombie</code> named <code>myZombie</code> (which will be a <code>storage</code> pointer). Set this variable to be equal to index <code>_zombieId</code> in our <code>zombies</code> array.</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./zombiefactory.sol"</span>;
+contract ZombieFeeding is ZombieFactory {
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedAndMultiply</span>(<span class="hljs-params">uint _zombieId, uint _targetDna</span>) <span class="hljs-title">public</span> </span>{
+    <span class="hljs-built_in">require</span>(msg.sender == zombieToOwner[_zombieId]);
+    Zombie storage myZombie = zombies[_zombieId];
+  }
+
+}
+</div></code></pre>
+<h3 id="28-zombie-dna">2.8 Zombie DNA</h3>
+<p>The formula for calculating a new zombie's DNA is : the average between the feeding zombie's DNA and the target's DNA.</p>
+<ol>
+<li>
+<p>First we need to make sure that <code>targetDna</code> isn't longer than 16 digits. To do this, we can set <code>_targetDna</code> equal to <code>targetDna % dnaModulus</code> to only take the last 16 digits.</p>
+</li>
+<li>
+<p>Next our function should declare a <code>uint</code> named <code>newDna</code>, and set it equal to the average of <code>myZombie</code>'s DNA and <code>_targetDna</code> (as in the example above).</p>
+</li>
+</ol>
+<p><strong>Note</strong>: We can access the properties of <code>myZombie</code> using <code>myZombie.name</code> and <code>myZombie.dna</code></p>
+<ol start="3">
+<li>Once we have the new DNA, let's call <code>_createZombie</code>. Note that it requires a name, so let's set our new zombie's name to <code>&quot;NoName&quot;</code> for now — we can write a function to change zombies' names later.</li>
+</ol>
+<p><strong>Note</strong>: For you Solidity whizzes, we may notice a problem with our code here! Don't worry, we'll fix this later.</p>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./zombiefactory.sol"</span>;
+
+contract ZombieFeeding is ZombieFactory {
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedAndMultiply</span>(<span class="hljs-params">uint _zombieId, uint _targetDna</span>) <span class="hljs-title">public</span> </span>{
+    <span class="hljs-built_in">require</span>(msg.sender == zombieToOwner[_zombieId]);
+    Zombie storage myZombie = zombies[_zombieId];
+    _targetDna = _targetDna % dnaModulus;
+    uint newDna = (myZombie.dna + _targetDna) / <span class="hljs-number">2</span>;
+    _createZombie(<span class="hljs-string">"NoName"</span>, newDna);
+  }
+
+}
+</div></code></pre>
+<h3 id="29-more-on-function-visibility">2.9 More on Function Visibility</h3>
+<p>The code in our previous sub section has a mistake!</p>
+<p>If we try compiling it, the compiler will throw an error.</p>
+<p>The issue is we tried calling the <code>_createZombie</code> function from within <code>ZombieFeeding</code>, but <code>_createZombie</code> is a <code>private</code> function inside <code>ZombieFactory</code>. This means none of the contracts that inherit from <code>ZombieFactory</code> can access it.</p>
+<h4 id="internal-and-external">Internal and External</h4>
+<p>In addition to <code>public</code> and <code>private</code>, Solidity has two more types of visibility for functions: <code>internal</code> and <code>external</code>.</p>
+<p><code>internal</code> is the same as <code>private</code>, except that it's also accessible to contracts that inherit from this contract. (Hey, that sounds like what we want here!).</p>
+<p><code>external</code> is similar to <code>public</code>, except that these functions can ONLY be called outside the contract — they can't be called by other functions inside that contract. We'll see why we might want to use <code>external</code> vs <code>public</code> later.</p>
+<p>For declaring <code>internal</code> or <code>external</code> functions, the syntax is the same as <code>private</code> and <code>public</code>:</p>
+<pre class="hljs"><code><div>contract Sandwich {
+  uint private sandwichesEaten = <span class="hljs-number">0</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">eat</span>(<span class="hljs-params"></span>) <span class="hljs-title">internal</span> </span>{
+    sandwichesEaten++;
+  }
+}
+
+contract BLT is Sandwich {
+  uint private baconSandwichesEaten = <span class="hljs-number">0</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">eatWithBacon</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">returns</span> (<span class="hljs-params">string memory</span>) </span>{
+    baconSandwichesEaten++;
+    <span class="hljs-comment">// We can call this here because it's internal</span>
+    eat();
+  }
+}
+</div></code></pre>
+<ol>
+<li>Change <code>_createZombie()</code> from <code>private</code> to <code>internal</code> so our other contract can access it.</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_createZombie</span>(<span class="hljs-params">string memory _name, uint _dna</span>) <span class="hljs-title">internal</span> </span>{
+        uint id = zombies.push(Zombie(_name, _dna)) - <span class="hljs-number">1</span>;
+        zombieToOwner[id] = msg.sender;
+        ownerZombieCount[msg.sender]++;
+        emit NewZombie(id, _name, _dna);
+    }
+</div></code></pre>
+<h3 id="210-what-do-zombies-eat">2.10 What Do Zombies Eat?</h3>
+<p>We assume that our Zombies eat CryptoKitties!</p>
+<p>In order to do this we'll need to read the kittyDna from the CryptoKitties smart contract. We can do that because the CryptoKitties data is stored openly on the blockchain.</p>
+<h4 id="interacting-with-other-contracts">Interacting with other contracts</h4>
+<p>For our contract to talk to another contract on the blockchain that we don't own, first we need to define an <code>interface</code>.</p>
+<p>Let's look at a simple example. Say there was a contract on the blockchain that looked like this:</p>
+<pre class="hljs"><code><div>contract LuckyNumber {
+  mapping(<span class="hljs-function"><span class="hljs-params">address</span> =&gt;</span> uint) numbers;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setNum</span>(<span class="hljs-params">uint _num</span>) <span class="hljs-title">public</span> </span>{
+    numbers[msg.sender] = _num;
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNum</span>(<span class="hljs-params">address _myAddress</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>) </span>{
+    <span class="hljs-keyword">return</span> numbers[_myAddress];
+  }
+}
+</div></code></pre>
+<p>This would be a simple contract where anyone could store their lucky number, and it will be associated with their Ethereum address. Then anyone else could look up that person's lucky number using their address.</p>
+<p>Now let's say we had an external contract that wanted to read the data in this contract using the <code>getNum</code> function.</p>
+<p>First we'd have to define an <code>interface</code> of the <code>LuckyNumber</code> contract:</p>
+<pre class="hljs"><code><div>contract NumberInterface {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNum</span>(<span class="hljs-params">address _myAddress</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>);
+}
+</span></div></code></pre>
+<p>Notice that this looks like defining a contract, with a few differences. For one, we're only declaring the functions we want to interact with — in this case <code>getNum</code> — and we don't mention any of the other functions or state variables.</p>
+<p>Secondly, we're not defining the function bodies. Instead of curly braces (<code>{</code> and <code>}</code>), we're simply ending the function declaration with a semi-colon (<code>;</code>).</p>
+<p>So it kind of looks like a contract skeleton. This is how the compiler knows it's an interface.</p>
+<p>By including this interface in our dapp's code our contract knows what the other contract's functions look like, how to call them, and what sort of response to expect.</p>
+<p>We'll get into actually calling the other contract's functions in the next lesson, but for now let's declare our interface for the CryptoKitties contract.</p>
+<p>Let us see the the CryptoKitties source code. There is a function called <code>getKitty</code> that returns all the kitty's data, including its &quot;genes&quot; (which is what our zombie game needs to form a new zombie!).</p>
+<p>The function looks like this:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKitty</span>(<span class="hljs-params">uint256 _id</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">
+    bool isGestating,
+    bool isReady,
+    uint256 cooldownIndex,
+    uint256 nextActionAt,
+    uint256 siringWithId,
+    uint256 birthTime,
+    uint256 matronId,
+    uint256 sireId,
+    uint256 generation,
+    uint256 genes
+</span>) </span>{
+    Kitty storage kit = kitties[_id];
+
+    <span class="hljs-comment">// if this variable is 0 then it's not gestating</span>
+    isGestating = (kit.siringWithId != <span class="hljs-number">0</span>);
+    isReady = (kit.cooldownEndBlock &lt;= block.number);
+    cooldownIndex = uint256(kit.cooldownIndex);
+    nextActionAt = uint256(kit.cooldownEndBlock);
+    siringWithId = uint256(kit.siringWithId);
+    birthTime = uint256(kit.birthTime);
+    matronId = uint256(kit.matronId);
+    sireId = uint256(kit.sireId);
+    generation = uint256(kit.generation);
+    genes = kit.genes;
+}
+</div></code></pre>
+<p>The function looks a bit different than we're used to. We can see it returns... a bunch of different values. If you're coming from a programming language like Javascript, this is different — in Solidity you can return more than one value from a function.</p>
+<p>Now that we know what this function looks like, we can use it to create an <code>interface</code>:</p>
+<ol>
+<li>
+<p>Define an <code>interface</code> called <code>KittyInterface</code>. Remember, this looks just like creating a new contract — we use the <code>contract</code> keyword.</p>
+</li>
+<li>
+<p>Inside the <code>interface</code>, define the function <code>getKitty</code> (which should be a copy/paste of the function above, but with a semi-colon after the returns statement, instead of everything inside the curly braces.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./zombiefactory.sol"</span>;
+contract KittyInterface {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKitty</span>(<span class="hljs-params">uint256 _id</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">
+    bool isGestating,
+    bool isReady,
+    uint256 cooldownIndex,
+    uint256 nextActionAt,
+    uint256 siringWithId,
+    uint256 birthTime,
+    uint256 matronId,
+    uint256 sireId,
+    uint256 generation,
+    uint256 genes
+  </span>);
+}
+<span class="hljs-title">contract</span> <span class="hljs-title">ZombieFeeding</span> <span class="hljs-title">is</span> <span class="hljs-title">ZombieFactory</span> </span>{
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedAndMultiply</span>(<span class="hljs-params">uint _zombieId, uint _targetDna</span>) <span class="hljs-title">public</span> </span>{
+    <span class="hljs-built_in">require</span>(msg.sender == zombieToOwner[_zombieId]);
+    Zombie storage myZombie = zombies[_zombieId];
+    _targetDna = _targetDna % dnaModulus;
+    uint newDna = (myZombie.dna + _targetDna) / <span class="hljs-number">2</span>;
+    _createZombie(<span class="hljs-string">"NoName"</span>, newDna);
+  }
+
+}
+</div></code></pre>
+<h3 id="211-using-an-interface">2.11 Using an Interface</h3>
+<p>Continuing our previous example with <code>NumberInterface</code>, once we've defined the <code>interface</code> as:</p>
+<pre class="hljs"><code><div>contract NumberInterface {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNum</span>(<span class="hljs-params">address _myAddress</span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">uint</span>);
+}
+</span></div></code></pre>
+<p>We can use it in a contract as follows:</p>
+<pre class="hljs"><code><div>contract MyContract {
+  address NumberInterfaceAddress = <span class="hljs-number">0xab38</span>... 
+  <span class="hljs-comment">// ^ The address of the FavoriteNumber contract on Ethereum</span>
+  NumberInterface numberContract = NumberInterface(NumberInterfaceAddress);
+  <span class="hljs-comment">// Now `numberContract` is pointing to the other contract</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">someFunction</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> </span>{
+    <span class="hljs-comment">// Now we can call `getNum` from that contract:</span>
+    uint num = numberContract.getNum(msg.sender);
+    <span class="hljs-comment">// ...and do something with `num` here</span>
+  }
+}
+</div></code></pre>
+<p>In this way, we contract can interact with any other contract on the Ethereum blockchain, as long they expose those functions as <code>public</code> or <code>external</code>.</p>
+<p>Let's set up our contract to read from the CryptoKitties smart contract!</p>
+<ol>
+<li>Save the address of the CryptoKitties contract in the code under a variable named <code>ckAddress</code>. In the next line, create a <code>KittyInterface</code> named <code>kittyContract</code>, and initialize it with <code>ckAddress</code> — just like we did with <code>numberContract</code> above.</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./zombiefactory.sol"</span>;
+contract KittyInterface {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKitty</span>(<span class="hljs-params">uint256 _id</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">
+    bool isGestating,
+    bool isReady,
+    uint256 cooldownIndex,
+    uint256 nextActionAt,
+    uint256 siringWithId,
+    uint256 birthTime,
+    uint256 matronId,
+    uint256 sireId,
+    uint256 generation,
+    uint256 genes
+  </span>);
+}
+<span class="hljs-title">contract</span> <span class="hljs-title">ZombieFeeding</span> <span class="hljs-title">is</span> <span class="hljs-title">ZombieFactory</span> </span>{
+
+  address ckAddress = <span class="hljs-number">0x06012c8cf97BEaD5deAe237070F9587f8E7A266d</span>;
+  KittyInterface kittyContract = KittyInterface(ckAddress);
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedAndMultiply</span>(<span class="hljs-params">uint _zombieId, uint _targetDna</span>) <span class="hljs-title">public</span> </span>{
+    <span class="hljs-built_in">require</span>(msg.sender == zombieToOwner[_zombieId]);
+    Zombie storage myZombie = zombies[_zombieId];
+    _targetDna = _targetDna % dnaModulus;
+    uint newDna = (myZombie.dna + _targetDna) / <span class="hljs-number">2</span>;
+    _createZombie(<span class="hljs-string">"NoName"</span>, newDna);
+  }
+
+}
+</div></code></pre>
+<h3 id="212-handling-multiple-return-values">2.12 Handling Multiple Return Values</h3>
+<p>This <code>getKitty</code> function is the first example we've seen that returns multiple values. Let's look at how to handle them:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">multipleReturns</span>(<span class="hljs-params"></span>) <span class="hljs-title">internal</span> <span class="hljs-title">returns</span>(<span class="hljs-params">uint a, uint b, uint c</span>) </span>{
+  <span class="hljs-keyword">return</span> (<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">processMultipleReturns</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> </span>{
+  uint a;
+  uint b;
+  uint c;
+  <span class="hljs-comment">// This is how you do multiple assignment:</span>
+  (a, b, c) = multipleReturns();
+}
+
+<span class="hljs-comment">// Or if we only cared about one of the values:</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getLastReturnValue</span>(<span class="hljs-params"></span>) <span class="hljs-title">external</span> </span>{
+  uint c;
+  <span class="hljs-comment">// We can just leave the other fields blank:</span>
+  (,,c) = multipleReturns();
+}
+</div></code></pre>
+<p>Let's make a function that gets the kitty genes from the contract:</p>
+<ol>
+<li>
+<p>Make a function called <code>feedOnKitty</code>. It will take 2 <code>uint</code> parameters, <code>zombieId</code> and <code>_kittyId</code>, and should be a <code>public</code> function.</p>
+</li>
+<li>
+<p>The function should first declare a <code>uint</code> named <code>kittyDna</code>.</p>
+</li>
+</ol>
+<ul>
+<li><strong>Note</strong>: In our <code>KittyInterface</code>, <code>genes</code> is a <code>uint256</code> — but if we remember back to Section 1, <code>uint</code> is an alias for <code>uint256</code> — they're the same thing.</li>
+</ul>
+<ol start="3">
+<li>
+<p>The function should then call the <code>kittyContract.getKitty</code> function with <code>_kittyId</code> and store genes in <code>kittyDna</code>. Remember <code>— getKitty</code> returns a ton of variables (10 to be exact). But all we care about is the last one, <code>genes</code>. Count commas carefully!</p>
+</li>
+<li>
+<p>Finally, the function should call <code>feedAndMultiply</code>, and pass it both <code>_zombieId</code> and <code>kittyDna</code>.</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./zombiefactory.sol"</span>;
+contract KittyInterface {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKitty</span>(<span class="hljs-params">uint256 _id</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">
+    bool isGestating,
+    bool isReady,
+    uint256 cooldownIndex,
+    uint256 nextActionAt,
+    uint256 siringWithId,
+    uint256 birthTime,
+    uint256 matronId,
+    uint256 sireId,
+    uint256 generation,
+    uint256 genes
+  </span>);
+}
+<span class="hljs-title">contract</span> <span class="hljs-title">ZombieFeeding</span> <span class="hljs-title">is</span> <span class="hljs-title">ZombieFactory</span> </span>{
+
+  address ckAddress = <span class="hljs-number">0x06012c8cf97BEaD5deAe237070F9587f8E7A266d</span>;
+  KittyInterface kittyContract = KittyInterface(ckAddress);
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedAndMultiply</span>(<span class="hljs-params">uint _zombieId, uint _targetDna</span>) <span class="hljs-title">public</span> </span>{
+    <span class="hljs-built_in">require</span>(msg.sender == zombieToOwner[_zombieId]);
+    Zombie storage myZombie = zombies[_zombieId];
+    _targetDna = _targetDna % dnaModulus;
+    uint newDna = (myZombie.dna + _targetDna) / <span class="hljs-number">2</span>;
+    _createZombie(<span class="hljs-string">"NoName"</span>, newDna);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedOnKitty</span>(<span class="hljs-params">uint _zombieId, uint _kittyId</span>) <span class="hljs-title">public</span> </span>{
+    uint kittyDna;
+    (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
+    feedAndMultiply(_zombieId, kittyDna);
+  }
+
+}
+</div></code></pre>
+<h3 id="213-bonus-kitty-genes">2.13 Bonus: Kitty Genes</h3>
+<p>Our function logic is now complete... but let's add in one bonus feature.</p>
+<p>Let's make it so zombies made from kitties have some unique feature that shows they're cat-zombies.</p>
+<p>To do this, we can add some special kitty code in the zombie's DNA.</p>
+<p>If we recall from Section 1, we're currently only using the first 12 digits of our 16 digit DNA to determine the zombie's appearance. So let's use the last 2 unused digits to handle &quot;special&quot; characteristics.</p>
+<p>We'll say that cat-zombies have <code>99</code> as their last two digits of DNA. So in our code, we'll say <code>if</code> a zombie comes from a cat, then set the last two digits of DNA to <code>99</code>.</p>
+<h3 id="if-statements">If statements</h3>
+<p>If statements in Solidity look just like javascript:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">eatBLT</span>(<span class="hljs-params">string memory sandwich</span>) <span class="hljs-title">public</span> </span>{
+  <span class="hljs-comment">// Remember with strings, we have to compare their keccak256 hashes</span>
+  <span class="hljs-comment">// to check equality</span>
+  <span class="hljs-keyword">if</span> (keccak256(abi.encodePacked(sandwich)) == keccak256(abi.encodePacked(<span class="hljs-string">"BLT"</span>))) {
+    eat();
+  }
+}
+</div></code></pre>
+<p>Let's implement cat genes in our zombie code.</p>
+<ol>
+<li>
+<p>First, let's change the function definition for <code>feedAndMultiply</code> so it takes a 3rd argument: a <code>string</code> named <code>_species</code> which we'll store in <code>memory</code>.</p>
+</li>
+<li>
+<p>Next, after we calculate the new zombie's DNA, let's add an <code>if</code> statement comparing the <code>keccak256</code> hashes of <code>_species</code> and the string <code>&quot;kitty&quot;</code>. We can't directly pass strings to <code>keccak256</code>. Instead, we will pass <code>abi.encodePacked(_species)</code> as an argument on the left side and <code>abi.encodePacked(&quot;kitty&quot;)</code> as an argument on the right side.</p>
+</li>
+<li>
+<p>Inside the <code>if</code> statement, we want to replace the last 2 digits of DNA with <code>99</code>. One way to do this is using the logic: <code>newDna = newDna - newDna % 100 + 99;</code>.</p>
+</li>
+</ol>
+<ul>
+<li><strong>Explanation</strong>: Assume <code>newDna</code> is <code>334455</code>. Then <code>newDna % 100</code> is <code>55</code>, so <code>newDna - newDna % 100</code> is <code>334400</code>. Finally add <code>99</code> to get <code>334499</code>.</li>
+</ul>
+<ol start="4">
+<li>Lastly, we need to change the function call inside <code>feedOnKitty</code>. When it calls <code>feedAndMultiply</code>, add the parameter <code>&quot;kitty&quot;</code> to the end.</li>
+</ol>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./zombiefactory.sol"</span>;
+contract KittyInterface {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKitty</span>(<span class="hljs-params">uint256 _id</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">
+    bool isGestating,
+    bool isReady,
+    uint256 cooldownIndex,
+    uint256 nextActionAt,
+    uint256 siringWithId,
+    uint256 birthTime,
+    uint256 matronId,
+    uint256 sireId,
+    uint256 generation,
+    uint256 genes
+  </span>);
+}
+<span class="hljs-title">contract</span> <span class="hljs-title">ZombieFeeding</span> <span class="hljs-title">is</span> <span class="hljs-title">ZombieFactory</span> </span>{
+
+  address ckAddress = <span class="hljs-number">0x06012c8cf97BEaD5deAe237070F9587f8E7A266d</span>;
+  KittyInterface kittyContract = KittyInterface(ckAddress);
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedAndMultiply</span>(<span class="hljs-params">uint _zombieId, uint _targetDna, string memory _species</span>) <span class="hljs-title">public</span> </span>{
+    <span class="hljs-built_in">require</span>(msg.sender == zombieToOwner[_zombieId]);
+    Zombie storage myZombie = zombies[_zombieId];
+    _targetDna = _targetDna % dnaModulus;
+    uint newDna = (myZombie.dna + _targetDna) / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">if</span> (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked(<span class="hljs-string">"kitty"</span>))) {
+      newDna = newDna - newDna % <span class="hljs-number">100</span> + <span class="hljs-number">99</span>;
+    }
+    _createZombie(<span class="hljs-string">"NoName"</span>, newDna);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedOnKitty</span>(<span class="hljs-params">uint _zombieId, uint _kittyId</span>) <span class="hljs-title">public</span> </span>{
+    uint kittyDna;
+    (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
+    feedAndMultiply(_zombieId, kittyDna, <span class="hljs-string">"kitty"</span>);
+  }
+
+}
+</div></code></pre>
+<h3 id="214-javascript-implementation">2.14 Javascript implementation</h3>
+<p>Once we're ready to deploy this contract to Ethereum we'll just compile and deploy <code>ZombieFeeding</code> — since this contract is our final contract that inherits from <code>ZombieFactory</code>, and has access to all the public methods in both contracts.</p>
+<p>Let's look at an example of interacting with our deployed contract using Javascript and web3.js:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">var</span> abi = <span class="hljs-comment">/* abi generated by the compiler */</span>
+<span class="hljs-keyword">var</span> ZombieFeedingContract = web3.eth.contract(abi)
+<span class="hljs-keyword">var</span> contractAddress = <span class="hljs-comment">/* our contract address on Ethereum after deploying */</span>
+<span class="hljs-keyword">var</span> ZombieFeeding = ZombieFeedingContract.at(contractAddress)
+
+<span class="hljs-comment">// Assuming we have our zombie's ID and the kitty ID we want to attack</span>
+<span class="hljs-keyword">let</span> zombieId = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">let</span> kittyId = <span class="hljs-number">1</span>;
+
+<span class="hljs-comment">// To get the CryptoKitty's image, we need to query their web API. This</span>
+<span class="hljs-comment">// information isn't stored on the blockchain, just their webserver.</span>
+<span class="hljs-comment">// If everything was stored on a blockchain, we wouldn't have to worry</span>
+<span class="hljs-comment">// about the server going down, them changing their API, or the company </span>
+<span class="hljs-comment">// blocking us from loading their assets if they don't like our zombie game ;)</span>
+<span class="hljs-keyword">let</span> apiUrl = <span class="hljs-string">"https://api.cryptokitties.co/kitties/"</span> + kittyId
+$.<span class="hljs-keyword">get</span>(apiUrl, function(data) {
+  <span class="hljs-keyword">let</span> imgUrl = data.image_url
+  <span class="hljs-comment">// do something to display the image</span>
+})
+
+<span class="hljs-comment">// When the user clicks on a kitty:</span>
+$(<span class="hljs-string">".kittyImage"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+  <span class="hljs-comment">// Call our contract's `feedOnKitty` method</span>
+  ZombieFeeding.feedOnKitty(zombieId, kittyId)
+})
+
+<span class="hljs-comment">// Listen for a NewZombie event from our contract so we can display it:</span>
+ZombieFactory.NewZombie(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, result</span>) </span>{
+  <span class="hljs-keyword">if</span> (error) <span class="hljs-keyword">return</span>
+  <span class="hljs-comment">// This function will display the zombie, like in lesson 1:</span>
+  generateZombie(result.zombieId, result.name, result.dna)
+})
+</div></code></pre>
+<h2 id="3-advanced-solidity-concepts">3. Advanced Solidity Concepts</h2>
+<h3 id="immutability-of-contracts">Immutability of Contracts</h3>
+<p>Up until now, Solidity has looked quite similar to other languages like JavaScript. But there are a number of ways that Ethereum DApps are actually quite different from normal applications.</p>
+<p>To start with, after we deploy a contract to Ethereum, it’s <code>immutable</code>, which means that it can never be modified or updated again.</p>
+<p>The initial code you deploy to a contract is there to stay, permanently, on the blockchain. This is one reason security is such a huge concern in Solidity. If there's a flaw in our contract code, there's no way for us to patch it later. We would have to tell our users to start using a different smart contract address that has the fix.</p>
+<p>But this is also a feature of smart contracts. The code is law. If we read the code of a smart contract and verify it, we can be sure that every time you call a function it's going to do exactly what the code says it will do. No one can later change that function and give us unexpected results.</p>
+<h4 id="external-dependencies">External dependencies</h4>
+<p>In Section 2, we hard-coded the CryptoKitties contract address into our DApp. But what would happen if the CryptoKitties contract had a bug and someone destroyed all the kitties?</p>
+<p>It's unlikely, but if this did happen it would render our DApp completely useless — our DApp would point to a hardcoded address that no longer returned any kitties. Our zombies would be unable to feed on kitties, and we'd be unable to modify our contract to fix it.</p>
+<p>For this reason, it often makes sense to have functions that will allow us to update key portions of the DApp.</p>
+<p>For example, instead of hard coding the CryptoKitties contract address into our DApp, we should probably have a <code>setKittyContractAddress</code> function that lets us change this address in the future in case something happens to the CryptoKitties contract.</p>
+<p>Let's update our code from Section 2 to be able to change the CryptoKitties contract address.</p>
+<ol>
+<li>
+<p>Delete the line of code where we hard-coded <code>ckAddress</code>.</p>
+</li>
+<li>
+<p>Change the line where we created <code>kittyContract</code> to just declare the variable — i.e. don't set it equal to anything.</p>
+</li>
+<li>
+<p>Create a function called <code>setKittyContractAddress</code>. It will take one argument, <code>_address</code> (an <code>address</code>), and it should be an <code>external</code> function.</p>
+</li>
+<li>
+<p>Inside the function, add one line of code that sets <code>kittyContract</code> equal to <code>KittyInterface(_address)</code>.</p>
+</li>
+</ol>
+<ul>
+<li><strong>Note</strong>: there is a security hole with this function, we'll fix it in the next sub section</li>
+</ul>
+<pre class="hljs"><code><div>pragma solidity &gt;=<span class="hljs-number">0.5</span><span class="hljs-number">.0</span> &lt;<span class="hljs-number">0.6</span><span class="hljs-number">.0</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">"./zombiefactory.sol"</span>;
+contract KittyInterface {
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKitty</span>(<span class="hljs-params">uint256 _id</span>) <span class="hljs-title">external</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span> (<span class="hljs-params">
+    bool isGestating,
+    bool isReady,
+    uint256 cooldownIndex,
+    uint256 nextActionAt,
+    uint256 siringWithId,
+    uint256 birthTime,
+    uint256 matronId,
+    uint256 sireId,
+    uint256 generation,
+    uint256 genes
+  </span>);
+}
+<span class="hljs-title">contract</span> <span class="hljs-title">ZombieFeeding</span> <span class="hljs-title">is</span> <span class="hljs-title">ZombieFactory</span> </span>{
+
+  KittyInterface kittyContract;
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setKittyContractAddress</span>(<span class="hljs-params">address _address</span>) <span class="hljs-title">external</span> </span>{
+    kittyContract = KittyInterface(_address);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedAndMultiply</span>(<span class="hljs-params">uint _zombieId, uint _targetDna, string memory _species</span>) <span class="hljs-title">public</span> </span>{
+    <span class="hljs-built_in">require</span>(msg.sender == zombieToOwner[_zombieId]);
+    Zombie storage myZombie = zombies[_zombieId];
+    _targetDna = _targetDna % dnaModulus;
+    uint newDna = (myZombie.dna + _targetDna) / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">if</span> (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked(<span class="hljs-string">"kitty"</span>))) {
+      newDna = newDna - newDna % <span class="hljs-number">100</span> + <span class="hljs-number">99</span>;
+    }
+    _createZombie(<span class="hljs-string">"NoName"</span>, newDna);
+  }
+
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">feedOnKitty</span>(<span class="hljs-params">uint _zombieId, uint _kittyId</span>) <span class="hljs-title">public</span> </span>{
+    uint kittyDna;
+    (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
+    feedAndMultiply(_zombieId, kittyDna, <span class="hljs-string">"kitty"</span>);
+  }
+
+}
+</div></code></pre>
+<h3 id="ownable-contracts">Ownable Contracts</h3>
+<p>There is a security hole in the previous section!</p>
+<p><code>setKittyContractAddress</code> is <code>external</code>, so anyone can call it! That means anyone who called the function could change the address of the CryptoKitties contract, and break our app for all its users.</p>
+<p>We do want the ability to update this address in our contract, but we don't want everyone to be able to update it.</p>
+<p>To handle cases like this, one common practice that has emerged is to make contracts <code>Ownable</code> — meaning they have an owner (you) who has special privileges.</p>
+<h4 id="openzeppelins-ownable-contract">OpenZeppelin's Ownable contract</h4>
+<p>Below is the <code>Ownable</code> contract taken from the <code>OpenZeppelin</code> Solidity library. OpenZeppelin is a library of secure and community-vetted smart contracts that we can use in your own DApps.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title <span class="hljs-variable">Ownable</span></span>
+ * <span class="hljs-doctag">@dev </span>The Ownable contract has an owner address, and provides basic authorization control
+ * functions, this simplifies the implementation of "user permissions".
+ */</span>
+contract Ownable {
+  address private _owner;
+
+  event OwnershipTransferred(
+    address indexed previousOwner,
+    address indexed newOwner
+  );
+
+  <span class="hljs-comment">/**
+   * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+   * account.
+   */</span>
+  <span class="hljs-keyword">constructor</span>() internal {
+    _owner = msg.sender;
+    emit OwnershipTransferred(address(<span class="hljs-number">0</span>), _owner);
+  }
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@return </span>the address of the owner.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">owner</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span>(<span class="hljs-params">address</span>) </span>{
+    <span class="hljs-keyword">return</span> _owner;
+  }
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Throws if called by any account other than the owner.
+   */</span>
+  modifier onlyOwner() {
+    <span class="hljs-built_in">require</span>(isOwner());
+    _;
+  }
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@return </span>true if `msg.sender` is the owner of the contract.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isOwner</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">view</span> <span class="hljs-title">returns</span>(<span class="hljs-params">bool</span>) </span>{
+    <span class="hljs-keyword">return</span> msg.sender == _owner;
+  }
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Allows the current owner to relinquish control of the contract.
+   * <span class="hljs-doctag">@notice </span>Renouncing to ownership will leave the contract without an owner.
+   * It will not be possible to call the functions with the `onlyOwner`
+   * modifier anymore.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">renounceOwnership</span>(<span class="hljs-params"></span>) <span class="hljs-title">public</span> <span class="hljs-title">onlyOwner</span> </span>{
+    emit OwnershipTransferred(_owner, address(<span class="hljs-number">0</span>));
+    _owner = address(<span class="hljs-number">0</span>);
+  }
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Allows the current owner to transfer control of the contract to a newOwner.
+   * <span class="hljs-doctag">@param </span>newOwner The address to transfer ownership to.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">transferOwnership</span>(<span class="hljs-params">address newOwner</span>) <span class="hljs-title">public</span> <span class="hljs-title">onlyOwner</span> </span>{
+    _transferOwnership(newOwner);
+  }
+
+  <span class="hljs-comment">/**
+   * <span class="hljs-doctag">@dev </span>Transfers control of the contract to a newOwner.
+   * <span class="hljs-doctag">@param </span>newOwner The address to transfer ownership to.
+   */</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_transferOwnership</span>(<span class="hljs-params">address newOwner</span>) <span class="hljs-title">internal</span> </span>{
+    <span class="hljs-built_in">require</span>(newOwner != address(<span class="hljs-number">0</span>));
+    emit OwnershipTransferred(_owner, newOwner);
+    _owner = newOwner;
+  }
+}
+</div></code></pre>
+<p>few new things here we haven't seen before:</p>
+<p>Constructors: constructor() is a constructor, which is an optional special function that has the same name as the contract. It will get executed only one time, when the contract is first created.
+Function Modifiers: modifier onlyOwner(). Modifiers are kind of half-functions that are used to modify other functions, usually to check some requirements prior to execution. In this case, onlyOwner can be used to limit access so only the owner of the contract can run this function. We'll talk more about function modifiers in the next chapter, and what that weird _; does.
+indexed keyword: don't worry about this one, we don't need it yet.
+So the Ownable contract basically does the following:</p>
+<p>When a contract is created, its constructor sets the owner to msg.sender (the person who deployed it)</p>
+<p>It adds an onlyOwner modifier, which can restrict access to certain functions to only the owner</p>
+<p>It allows you to transfer the contract to a new owner</p>
+<p>onlyOwner is such a common requirement for contracts that most Solidity DApps start with a copy/paste of this Ownable contract, and then their first contract inherits from it.</p>
+<p>Since we want to limit setKittyContractAddress to onlyOwner, we're going to do the same for our contract.</p>
+
+</body>
+</html>
